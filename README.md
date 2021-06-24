@@ -23,7 +23,8 @@ With python3.7 or later.
 ```sh
 python3 -m bot
 ```
-
+If You Are Deploying Via Heroku Install Heroku Postgres Plugin And Heroku/Phyton Buildpack
+https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest Install This Build Pack
 ### Credits
 *Thanks to [ShannonScott](https://gist.github.com/ShannonScott) for [transcode_h265.py](https://gist.github.com/ShannonScott/6d807fc59bfa0356eee64fad66f9d9a8)*
 
