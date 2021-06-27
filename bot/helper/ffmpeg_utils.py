@@ -36,15 +36,15 @@ def encode(filepath):
             video_opts = '-c:v copy -tag:v hvc1'
     else:
         # Transcode to h265 / hvc1
-        video_opts = '-c:v libx265 -crf 29 -pix_fmt yuv420p -tag:v hvc15 -b:v 360k -metadata title=@anime_low_size encodes -preset medium -c:s copy -map 0'
+        video_opts = '-c:v libx265 -crf 28 -pix_fmt yuv420p10le -tag:v hvc15 -metadata title=animeplex_an -preset fast -c:s copy -map 0'
     # Get the audio channel codec
     audio_codec = get_codec(filepath, channel='a:0')
     if audio_codec == []:
         audio_opts = ''
     elif audio_codec[0] == 'aac':
-        audio_opts = '-c:a libvorbis -profile:a aac_he_v2 -vbr 2 -ab 60k -map 0:a? -map_metadata 0'
+        audio_opts = '-c:a copy -map 0:a? -map_metadata 0'
     else:
-        audio_opts = '-c:a libopus -profile:a aac_he_v2 -vbr 2 -ab 60k -map 0:a? -map_metadata 0'
+        audio_opts = 'c:a aac -b:a 128k -map 0:a? -map_metadata 0'
     call(['ffmpeg', '-i', filepath] + video_opts.split() + audio_opts.split() + [output_filepath])
     
     return output_filepath
